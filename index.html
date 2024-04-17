@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input">
+    <button onclick="update()">ADD</button>
+    <div id="result"></div>
+    <script>
+        var div=document.getElementById("result");
+        var input=document.getElementById("input");
+        function update(){
+            var head=document.createElement("h1")
+            head.textContent=input.value;
+            div.append(head);
+        }
+    </script>
+</body>
+</html>
