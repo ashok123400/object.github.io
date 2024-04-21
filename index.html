@@ -3,20 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inventory Management</title>
 </head>
 <body>
-    <input id="input">
-    <button onclick="update()">ADD</button>
-    <div id="result"></div>
+    <h1></h1>
+    <input id="productName" placeholder="Product Name">
+    <input id="productPrice" placeholder="Product Price">
+    <input id="productQuantity" placeholder="Product Quantity">
+    <button onclick="inventory.addProduct()">Add Product</button>
+    <button onclick="inventory.displayProducts()">Display Products</button>
+    <div id="productList"></div>
+
     <script>
-        var div=document.getElementById("result");
-        var input=document.getElementById("input");
-        function update(){
-            var head=document.createElement("h1")
-            head.textContent=input.value;
-            div.append(head);
-        }
+        var inventory = {
+            products: [],
+
+            // Method to add a new product
+            addProduct: function() {
+                var name = document.getElementById("productName").value;
+                var price = parseFloat(document.getElementById("productPrice").value);
+                var quantity = parseInt(document.getElementById("productQuantity").value);
+
+                if (name && !isNaN(price) && !isNaN(quantity)) {
+                    this.products.push({
+                        name: name,
+                        price: price,
+                        quantity: quantity
+                    });
+                    console.log("Product added successfully:", name);
+                    document.getElementById("productName").value = ""; // Clear input fields after adding product
+                    document.getElementById("productPrice").value = "";
+                    document.getElementById("productQuantity").value = "";
+                }
+            },
+
+            // Method to display all products
+            displayProducts: function() {
+    var productListDiv = document.getElementById("productList");
+    productListDiv.innerHTML = ""; // Clear previous content
+
+    if (this.products.length === 0) {
+        productListDiv.innerHTML = "<p>No products available.</p>";
+    } else {
+        var productListHTML = "<h2>Product List</h2>";
+        productListHTML += "<ul>";
+        this.products.forEach(function(product) {
+            productListHTML += "<li>" + product.name + " - Price: $" + product.price + " - Quantity: " + product.quantity + "</li>";
+        });
+        productListHTML += "</ul>";
+        productListDiv.innerHTML = productListHTML;
+    }
+}
+        };
     </script>
 </body>
 </html>
