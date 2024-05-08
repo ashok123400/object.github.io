@@ -4,16 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Management</title>
+    <style>
+        nav{
+            border:1px solid red;
+            border-style:solid;
+            padding:5px;
+            text-align:center;
+            background-color:lightblue;
+        }
+        button{
+            background-color:lightgreen;
+        }
+    </style>
 </head>
 <body>
-    <h1></h1>
-    <input id="productName" placeholder="Product Name">
-    <input id="productPrice" placeholder="Product Price">
-    <input id="productQuantity" placeholder="Product Quantity">
-    <button onclick="inventory.addProduct()">Add Product</button>
-    <button onclick="inventory.displayProducts()">Display Products</button>
+    <h1>INVENTORY OBJECT </h1>
+    <h2></h2>
+    <nav>
+    <input id="productName" placeholder="Product Name"> <br>
+    <input id="productPrice" placeholder="Product Price"> <br>
+    <input id="productQuantity" placeholder="Product Quantity"> <br>
+    <button onclick="inventory.addProduct()">Add Product</button> <br>
+    <button onclick="inventory.displayProducts()">Display Products</button> <br>
     <div id="productList"></div>
-
+    </nav>
     <script>
         var inventory = {
             products: [],
